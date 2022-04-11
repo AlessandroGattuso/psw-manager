@@ -1,0 +1,46 @@
+@charset "utf-8";
+body{
+  background-color: #04192F !important;
+  margin: 0;
+  height: 1000px;
+  color: #0a78ed !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h1{
+  color: white;
+}
+.form-control{
+  border: 2px solid #68707a !important;
+  width: 600px !important;
+  border-radius: 7px !important;
+}
+
+.center{
+  position: relative;
+  margin-top: 200px !important;
+  width: 50%;
+  left: 320px;
+  border: 3px solid #da0940;
+  border-radius: 10px;
+  padding: 17px;
+}
+
+.right{
+  position: absolute;
+  right: 20px;
+  color: #68707a;
+}
+
+.btn{
+  border: 1px solid #da0940 !important;
+  border-radius: 15px !important;
+  background-color: white !important;
+  color: #da0940 !important;
+  transition: 1s;
+}
+
+.btn:hover{
+  border-color: transparent !important;
+  background-color: #da0940 !important;
+  color: white !important;
+}
