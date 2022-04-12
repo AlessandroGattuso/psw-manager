@@ -15,11 +15,22 @@
 
   <body>
 
-      <h1 class="text-center my-5">
+    <div class="d-flex justify-content-between">
+
+      <h2 class="my-4 ms-3">
+        <span style="color: #0b7cf5;">Log</span>
+        <span style="color: white; margin-left: -6px;">in</span>
+      </h2>
+      <h1 class="my-4 title">
         <span style="color: white">Password</span> 
         <span style="color: #da0940">Wallet</span> 
-      
       </h1>
+      <nav class="navbar mt-2">
+        <form class="container-fluid">
+          <button class="btn btn-outline-success me-2" type="button" id="nav-button">Sign up</button>
+        </form>
+      </nav>
+    </div>
 
      
       <div class="center-extern">
@@ -30,7 +41,7 @@
               <div>
                 <input type="text" class="form-control" id="Email" placeholder="email@example.com">
               </div>
-              <a href="" class="right">Non hai un account?</a>
+              <a href="" class="right">Don't have an account?</a>
           </div>
 
           <label for="MasterPassword" class="mb-2 mt-5">Master Password</label>
@@ -38,7 +49,7 @@
             <div>
               <input type="password" class="form-control" id="MasterPassword">
             </div>
-            <a href="" class="right">Hai dimenticato la password?</a>
+            <a href="" class="right">Forgot password?</a>
           </div>
 
           <button type="button" class="btn btn-primary mt-5">Submit</button>

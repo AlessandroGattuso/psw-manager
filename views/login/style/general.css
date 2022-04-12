@@ -18,7 +18,7 @@ body{
   margin-top: 200px !important;
   width: 640px;
   left: 340px;
-  border: 3px solid white;
+  border: 3px solid rgb(238, 238, 238);
   border-radius: 10px;
 }
 
@@ -26,7 +26,7 @@ body{
   position: relative;
   width: 100%;
   left: 0;
-  border: 2px solid #da0940;
+  border: 2.5px solid #da0940;
   border-radius: 10px;
   padding: 17px;
 }
@@ -38,9 +38,9 @@ body{
 }
 
 .btn{
-  border: 0.8px solid #da0940 !important;
-  border-radius: 15px !important;
-  background-color: rgb(238, 238, 238) !important;
+  border: 1.3px solid #da0940 !important;
+  border-radius: 18px !important;
+  background-color: rgb(241, 241, 241) !important;
   color: #da0940 !important;
   transition: 1s;
 }
@@ -48,5 +48,17 @@ body{
 .btn:hover{
   border-color: transparent !important;
   background-color: #da0940 !important;
-  color: white !important;
+  color: rgb(238, 238, 238) !important;
+}
+
+#nav-button.btn{
+  border: 1.5px solid #da0940 !important;
+  border-radius: 6px !important;
+  background-color: #04192F !important;
+  color: #da0940 !important;
+  transition: 0.5s;
+}
+
+#nav-button.btn:hover{
+  background-color: #10283c !important;
 }
