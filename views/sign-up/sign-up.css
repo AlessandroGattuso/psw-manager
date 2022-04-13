@@ -13,13 +13,14 @@ body{
 }
 
 #E-mail.form-control,
-#MasterPassword.form-control{
+#MasterPassword.form-control,
+#ConfirmPassword.form-control{
   width: 659px !important;
 }
 
 .center{
   margin: 23% !important;
-  height: 420px;
+  height: 502px;
   margin-top: 100px !important;
   width: 720px;
   border: 3px solid #da0940;
@@ -30,13 +31,13 @@ body{
 .btn{
   border: none !important;
   border-radius: 18px !important;
-  background-color: #da0941ed !important;
+  background-color: #da0941e9 !important;
   color: rgb(238, 238, 238) !important;
   transition: 0.5s !important;
 }
 
 .btn:hover{
-  background-color: #ff0044f3 !important;
+  background-color: #da0941cc !important;
 }
 
 #nav-button.btn{
