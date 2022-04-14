@@ -1,6 +1,6 @@
 
 body{
-  background-color: #04192F !important;
+  background-color: /* dark mode: #04192F*/ rgb(231, 231, 231) !important;
   margin: 0;
   height: 1000px;
   color: #0b7cf5 !important;
@@ -10,4 +10,31 @@ body{
 .title{
   background-color: #b8143c !important;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.sidebar{
+  /* dark mode: border-right: 1.5px solid #b8143dc7;*/
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  background-color: #10283c !important;
+}
+
+.activated{
+  background-color: #0b65f5eb !important;
+  color: white !important;
+}
+
+.trash-bin-logo{
+  position: absolute;
+  width: 43px;
+  height: 40px;
+}
+
+.favorites-logo{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 40px;
+  top: 66px;
 }
