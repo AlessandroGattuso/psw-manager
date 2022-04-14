@@ -1,0 +1,13 @@
+
+body{
+  background-color: #04192F !important;
+  margin: 0;
+  height: 1000px;
+  color: #0b7cf5 !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.title{
+  background-color: #ba123f !important;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
