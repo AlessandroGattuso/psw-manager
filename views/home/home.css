@@ -2,18 +2,19 @@
 body{
   background-color: /* dark mode: #04192F*/ rgb(231, 231, 231) !important;
   margin: 0;
-  height: 1000px;
   color: #0b7cf5 !important;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.title{
+.header{
+  box-shadow: 1px 1px 5px black;
   background-color: #b8143c !important;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .sidebar{
   /* dark mode: border-right: 1.5px solid #b8143dc7;*/
+  box-shadow: 1px 1px 5px black;
   position: fixed;
   top: 56px;
   bottom: 0;
