@@ -7,14 +7,14 @@ body{
 }
 
 .header{
-  box-shadow: 1px 1px 5px black;
+  box-shadow: 1.7px 1px 5px black;
   background-color: #b8143c !important;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .sidebar{
   /* dark mode: border-right: 1.5px solid #b8143dc7;*/
-  box-shadow: 1px 1px 5px black;
+  box-shadow: 2px 1px 5px black;
   position: fixed;
   top: 56px;
   bottom: 0;
@@ -34,8 +34,12 @@ body{
 
 .favorites-logo{
   position: absolute;
-  width: 20px;
+  width: 19px;
   height: 20px;
   left: 40px;
   top: 66px;
+}
+
+.menu-user{
+  background-color: rgb(231, 231, 231) !important;
 }
