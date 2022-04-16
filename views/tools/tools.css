@@ -40,37 +40,45 @@ body{
   text-align: center;
 }
 
+.psw-checkbox,
+.passphrase-checkbox{
+  top: 290px;
+}
+
 .psw-checkbox{
-  top: 310px;
   left: 170px;
   color: #cd1744;
 }
 
 .passphrase-checkbox{
-  top: 310px;
   left: 280px;
   color: #cd1744;
 }
 
+.no-border{
+  border-color: none;
+}
 input[type='radio']:after {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   border-radius: 15px;
-  top: -3.7px;
-  left: -0.65px;
+  top: -2.9px;
+  left: -1px;
   position: relative;
   background-color: #04192F;
   content: '';
   display: inline-block;
   visibility: visible;
-  border: 2.5px solid white;
+  border: 2.7px solid white;
 }
-input[type='radio']:checked:after {
-  width: 15px;
-  height: 15px;
+
+input[type='radio']:checked:after{
+  box-shadow: none;
+  width: 16px;
+  height: 16px;
   border-radius: 15px;
-  top: -3.2657px;
-  left: -0.65px;
+  top: -2.9px;
+  left: -1px;
   position: relative;
   background-color: #cd1744;
   content: '';
@@ -107,9 +115,14 @@ input[type='radio']:checked:after {
 }
 
 .selects-container{
-  top: 556px;
+  top: 535px;
   left: 160px;
-  color: #cd1744;
+  color: rgb(225, 225, 225);
+}
+
+input[type=checkbox]:checked{
+  background-color: #b8143c;
+  border: none;
 }
 
 .buttons-container{
@@ -143,3 +156,4 @@ input[type='radio']:checked:after {
 .btn-secondary:hover{
   background-color: #68707ab6 !important;
 }
+
