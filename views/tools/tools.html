@@ -13,7 +13,7 @@
     <title>Password Wallet</title>
   </head>
 
-  <body>
+  <body onload="generatePassword()">
 
     <nav class="navbar navbar-expand-lg navbar-dark position-fixed header" style="right: 0; left: 0;">
       <div class="container-fluid">
@@ -42,7 +42,7 @@
     <div class="line"></div>
     
     <div class="container">
-      <input class="passwordGenerator" type="text" value="ASJHDBASKUDYADUEADUWVBUWQDVUWADV" id="password-generator">
+      <input class="passwordGenerator" type="text" value="" id="password-generator">
     </div>
 
     <div class="form-check position-absolute psw-checkbox">
@@ -59,36 +59,36 @@
       </label>
     </div>
     
-    <div class="container position-absolute selects-container">
+    <form class="container position-absolute selects-container">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="" checked>
+        <input class="form-check-input" type="checkbox" id="a-z" checked>
         <label class="form-check-label" for="inlineCheckbox1">a-z</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <input class="form-check-input" type="checkbox" id="special-chars" value="">
         <label class="form-check-label" for="inlineCheckbox2">!@#$%^&*()</label>
       </div>
       <br>
       <div class="form-check form-check-inline" style="margin-right: 13px;">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+        <input class="form-check-input" type="checkbox" id="a-z-uppercase" value="" checked>
         <label class="form-check-label" for="inlineCheckbox1">A-Z</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" checked>
+        <input class="form-check-input" type="checkbox" id="ambiguous-chars" value="" checked>
         <label class="form-check-label" for="inlineCheckbox2">Avoid Ambiguous Characters</label>
       </div>
       <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <input class="form-check-input" type="checkbox" id="numbers" value="" checked>
         <label class="form-check-label" for="flexCheckChecked">
           0-9
         </label>
       </div>
       
-    </div>
+    </form>
 
     <div class="container-md position-absolute lenght">
      <div style="margin-bottom: 8px;">Lenght</div>
-     <input class="lenght-textbox" type="text" value="14">
+     <input class="lenght-textbox" id="lenght-textbox" type="text" value="25">
     </div>
 
     <div class="container-md position-absolute minNumbers">
@@ -104,7 +104,7 @@
     </div>
 
     <div class="container buttons-container ms-2">
-      <input type="submit" value="Genarate Password" class="generatePsw">
+      <input type="button" value="Generate Password" class="generatePsw" id="generatePsw" onclick="generatePassword()">
       <input type="button" class="btn btn-secondary" value="Copy Password" onclick="Copy()" id="cp-btn">
     </div>
 
@@ -112,30 +112,49 @@
     <script>
 
       document.getElementById("cp_btn").addEventListener("click", copy_password);
+      document.getElementById("generatePsw").addEventListener("click", generatePassword);
 
       function Copy() {
           const copyText = document.getElementById('password-generator')
           copyText.select();
           document.execCommand('copy')
-          console.log('Copied Text')
       }
 
-      /*function generatePassword(lenght) {
+      function generatePassword() {
 
+        const length = document.getElementById('lenght-textbox').value;
+        let charset = "";
         const a_z = "abcdefghijklmnopqrstuvwxyz";
         const numbers = "0123456789";
-        const A_Z= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const A_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const S_chars = "!@#$%^&*"; 
 
-        if(S_chars){
-          chars += S_chars; 
+        if(document.getElementById('a-z').checked){
+          charset += a_z;
         }
-        retVal = "";
-        for (var i = 0, n = charset.length; i < length; ++i) {
+
+        if(document.getElementById('a-z-uppercase').checked){
+          charset += A_Z ;
+        }
+
+        if(document.getElementById('special-chars').checked){
+          charset += S_chars ;
+        }
+
+        if(document.getElementById('numbers').checked){
+          charset += numbers;
+        }
+
+        let retVal = "";
+        let i = 0;
+        const n = charset.length
+        for (; i < length; ++i) {
           retVal += charset.charAt(Math.floor(Math.random() * n));
         }
-        return retVal;
-      }*/
+        console.log(retVal);
+        document.getElementById('password-generator').value = retVal;
+
+      }
 
     </script>
 
