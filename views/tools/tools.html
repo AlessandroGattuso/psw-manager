@@ -42,7 +42,7 @@
     <div class="line"></div>
     
     <div class="container">
-      <input class="passwordGenerator" type="text" value="ASJHDBASKUDYADUEADUWVBUWQDVUWADV">
+      <input class="passwordGenerator" type="text" value="ASJHDBASKUDYADUEADUWVBUWQDVUWADV" id="password-generator">
     </div>
 
     <div class="form-check position-absolute psw-checkbox">
@@ -66,7 +66,7 @@
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-        <label class="form-check-label" for="inlineCheckbox2">@#$%^&*</label>
+        <label class="form-check-label" for="inlineCheckbox2">!@#$%^&*()</label>
       </div>
       <br>
       <div class="form-check form-check-inline" style="margin-right: 13px;">
@@ -105,11 +105,40 @@
 
     <div class="container buttons-container ms-2">
       <input type="submit" value="Genarate Password" class="generatePsw">
-      <input type="button" class="btn btn-secondary" value="Copy Password">
+      <input type="button" class="btn btn-secondary" value="Copy Password" onclick="Copy()" id="cp-btn">
     </div>
 
 
-    </div>
+    <script>
+
+      document.getElementById("cp_btn").addEventListener("click", copy_password);
+
+      function Copy() {
+          const copyText = document.getElementById('password-generator')
+          copyText.select();
+          document.execCommand('copy')
+          console.log('Copied Text')
+      }
+
+      /*function generatePassword(lenght) {
+
+        const a_z = "abcdefghijklmnopqrstuvwxyz";
+        const numbers = "0123456789";
+        const A_Z= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const S_chars = "!@#$%^&*"; 
+
+        if(S_chars){
+          chars += S_chars; 
+        }
+        retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+          retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return retVal;
+      }*/
+
+    </script>
+
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
