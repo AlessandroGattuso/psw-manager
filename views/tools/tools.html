@@ -93,13 +93,13 @@
 
     <div class="container-md position-absolute minNumbers">
       <div style="margin-bottom: 8px;">Minimum Numbers</div>
-      <input class="min-numbers-textbox" type="text" value="1">
+      <input class="min-numbers-textbox" id="min-numbers" type="text" value="1">
      </div>
     </div>
 
     <div class="container-md position-absolute minSpecials">
       <div style="margin-bottom: 8px;">Minimum Specials</div>
-      <input class="min-specials-textbox" type="text" value="1">
+      <input class="min-specials-textbox" id="min-specials" type="text" value="1">
      </div>
     </div>
 
@@ -111,10 +111,10 @@
 
     <script>
 
-      document.getElementById("cp_btn").addEventListener("click", copy_password);
+      document.getElementById("cp_btn").addEventListener("click", Copy());
       document.getElementById("generatePsw").addEventListener("click", generatePassword);
 
-      function Copy() {
+      function Copy(){
           const copyText = document.getElementById('password-generator')
           copyText.select();
           document.execCommand('copy')
@@ -123,27 +123,32 @@
       function generatePassword() {
 
         const length = document.getElementById('lenght-textbox').value;
+        const minNumbers = document.getElementById('min-numbers').value;
+        const minSpecials = document.getElementById('min-specials').value;
+        console.log(minSpecials);
+
         let charset = "";
+
         const a_z = "abcdefghijklmnopqrstuvwxyz";
         const numbers = "0123456789";
         const A_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const S_chars = "!@#$%^&*"; 
 
-        if(document.getElementById('a-z').checked){
-          charset += a_z;
-        }
+        if(document.getElementById('a-z').checked)
+              charset += a_z;
+        
 
-        if(document.getElementById('a-z-uppercase').checked){
-          charset += A_Z ;
-        }
+        if(document.getElementById('a-z-uppercase').checked)
+              charset += A_Z ;
+        
 
-        if(document.getElementById('special-chars').checked){
-          charset += S_chars ;
-        }
+        if(document.getElementById('special-chars').checked)
+              charset += S_chars ;
+        
 
-        if(document.getElementById('numbers').checked){
-          charset += numbers;
-        }
+        if(document.getElementById('numbers').checked)
+              charset += numbers;
+        
 
         let retVal = "";
         let i = 0;
@@ -151,8 +156,16 @@
         for (; i < length; ++i) {
           retVal += charset.charAt(Math.floor(Math.random() * n));
         }
-        console.log(retVal);
-        document.getElementById('password-generator').value = retVal;
+
+        const check_numbers = retVal.match(/\d/g)?.length || 0;
+        const check_specials = retVal.match(/!@#$%^&*/g)?.length || 0;
+
+        console.log(check_specials)
+
+        if(check_numbers < minNumbers && check_specials < minSpecials)
+          generatePassword();
+        else
+          document.getElementById('password-generator').value = retVal;
 
       }
 
