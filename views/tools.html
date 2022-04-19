@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="./tools.css">
+    <link rel="stylesheet" href="./style/tools.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark position-fixed header" style="right: 0; left: 0;">
       <div class="container-fluid">
-        <a class="navbar-brand ms-1" href="../home/home.html">
+        <a class="navbar-brand ms-1" href="./home.html">
           Password 
           <span style="color: #04192F">Wallet</span>
         </a>
@@ -28,10 +28,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../home/home.html">Home</a>
+                <a class="nav-link" aria-current="page" href="./home.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="../tools/tools.html">Tools</a>
+                <a class="nav-link active" href="./tools.html">Tools</a>
               </li>
           </div>
         </div>
@@ -99,19 +99,19 @@
 
     <div class="container-md position-absolute minSpecials">
       <div style="margin-bottom: 8px;">Minimum Specials</div>
-      <input class="min-specials-textbox" id="min-specials" type="text" value="1">
+      <input class="min-specials-textbox" id="min-specials" type="text" value="0">
      </div>
     </div>
 
     <div class="container buttons-container ms-2">
       <input type="button" value="Generate Password" class="generatePsw" id="generatePsw" onclick="generatePassword()">
-      <input type="button" class="btn btn-secondary" value="Copy Password" onclick="Copy()" id="cp-btn">
+      <input type="button" class="btn btn-secondary" value="Copy Password" onclick="Copy()" id="cp_btn">
     </div>
 
 
     <script>
 
-      document.getElementById("cp_btn").addEventListener("click", Copy());
+      document.getElementById("cp_btn").addEventListener("click", Copy);
       document.getElementById("generatePsw").addEventListener("click", generatePassword);
 
       function Copy(){
@@ -125,7 +125,6 @@
         const length = document.getElementById('lenght-textbox').value;
         const minNumbers = document.getElementById('min-numbers').value;
         const minSpecials = document.getElementById('min-specials').value;
-        console.log(minSpecials);
 
         let charset = "";
 
@@ -150,23 +149,56 @@
               charset += numbers;
         
 
-        let retVal = "";
+        let result = "";
         let i = 0;
         const n = charset.length
+
         for (; i < length; ++i) {
-          retVal += charset.charAt(Math.floor(Math.random() * n));
+          result += charset.charAt(Math.floor(Math.random() * n));
         }
 
-        const check_numbers = retVal.match(/\d/g)?.length || 0;
-        const check_specials = retVal.match(/!@#$%^&*/g)?.length || 0;
+        let checkNumbers = result.match(/\d/g)?.length || 0;
+        let checkSpecials = result.match(/[!@#$%^&*]/g)?.length || 0;
+        console.log(checkSpecials)
 
-        console.log(check_specials)
+        let j;
+        let char;
+        while(checkNumbers < minNumbers){
 
-        if(check_numbers < minNumbers && check_specials < minSpecials)
-          generatePassword();
-        else
-          document.getElementById('password-generator').value = retVal;
+            i = Math.floor(Math.random() * result.length);
+            j = result.charAt(i);
 
+            if(!(j.match(/\d/g))){
+              char = numbers.charAt(Math.floor(Math.random() * numbers.length));
+              result = setCharAt(result, i, char);
+            }
+
+            checkNumbers = result.match(/\d/g)?.length || 0;
+
+        }
+
+        while(checkSpecials < minSpecials){
+
+            i = Math.floor(Math.random() * result.length);
+            j = result.charAt(i);
+            
+
+            if(!(j.match(/[!@#$%^&*]/g))){
+              char = S_chars.charAt(Math.floor(Math.random() * S_chars.length));
+              result = setCharAt(result, i, char);
+            }
+
+            checkSpecials = result.match(/[!@#$%^&*]/g)?.length || 0;
+
+        }
+     
+        document.getElementById('password-generator').value = result;
+
+      }
+
+      function setCharAt(str,index,chr) {
+        if(index > str.length-1) return str;
+        return str.substring(0,index) + chr + str.substring(index+1);
       }
 
     </script>
