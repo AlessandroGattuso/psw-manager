@@ -2,9 +2,8 @@ const express = require("express")
 const path = require('path');
 const app = express();
 
-app.set('view engine', 'ejs');
 const login = ((req,res)=>{
-  res.render('login');
+  res.sendFile(path.join(__dirname,'../views','login.html')); 
 })
 
 module.exports = {login};
