@@ -17,9 +17,9 @@ body{
   border-radius: 7px !important;
 }
 
-#E-mail.form-control,
-#MasterPassword.form-control,
-#ConfirmPassword.form-control{
+input[name='email'],
+input[name='masterPassword'],
+input[name='confirmPassword']{
   width: 659px !important;
 }
 

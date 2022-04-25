@@ -1,16 +1,18 @@
 const express = require('express');
 const connectDB =  require('./db/connect');
-const login = require('./routes/routes');
+const route = require('./routes/routes');
 const path = require('path');
 require('dotenv').config();
+
+const { sign } = require('crypto');
 
 const app = express();
 const PORT = 3000;
 
-app.set('view engine', 'ejs');
-app.use('/', express.static(path.join(__dirname, 'views')));
+app.use(express.urlencoded({extended: false}));
+app.use(express.static('./views'));
 app.use(express.json());
-app.use('/', login); 
+app.use('/', route);
 
 const start = async()=>{                
   try {

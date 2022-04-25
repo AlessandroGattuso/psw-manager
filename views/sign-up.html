@@ -27,40 +27,46 @@
     </div>
 
         
-    <div class="center pt-4 ps-4">
+    <form action="/sign-up" method="POST" class="center pt-4 ps-4" id="form-id">
 
       <div class="row">
         <div class="col">
-          First name
-          <input type="text" class="form-control" placeholder="First name" id="Name">
+          <label for="firstName">First name</label>
+          <input type="text" class="form-control" placeholder="First name" name="firstName">
         </div>
         <div class="col">
-          Last name
-          <input type="text" class="form-control" placeholder="Last name" id="Last name">
+          <label for="lastName">Last name</label>
+          <input type="text" class="form-control" placeholder="Last name" name="lastName">
         </div>
       </div>
 
       <div class="container my-5 p-0">
-        E-mail
-        <input type="text" class="form-control" placeholder="E-mail" id="E-mail">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" placeholder="E-mail" name="email">
       </div>
 
       <div class="container mb-3 p-0">
-        Master Password
-        <input type="password" class="form-control" placeholder="Master Password" id="MasterPassword">
+        <label for="MasterPassword">Master Password</label>
+        <input type="password" class="form-control" placeholder="Master Password" name="masterPassword">
       </div>
 
       <div class="container mb-5 p-0">
-        Confirm Master Password
-        <input type="password" class="form-control" placeholder="Master Password" id="ConfirmPassword">
+        <label for="ConfirmPassword">Confirm Master Password</label>
+        <input type="password" class="form-control" placeholder="Master Password" name="confirmPassword">
       </div>
 
-      <form action="./login.html">
-        <button class="btn" type="submit">Create</button>
-      </form>
-    </div>
-        
+      <input class="btn" type="submit" value="Create">
+
+    </form>
+
+    <script>
+      $(document).ready(() =>{
+        ('#form-id').submit((e)=>{
+          e.preventDefault();
       
+        });
+      });
+    </script>
 
 
 
