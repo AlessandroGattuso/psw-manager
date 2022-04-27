@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AlessandroGattuso/psw-manager#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.0",
@@ -26,7 +27,6 @@
     "express": "^4.17.3",
     "joi": "^17.6.0",
     "mongoose": "^6.3.0",
-    "nodemon": "^2.0.15",
-    "xml": "^1.0.1"
+    "nodemon": "^2.0.15"
   }
 }

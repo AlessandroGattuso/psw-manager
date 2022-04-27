@@ -42,44 +42,25 @@
 
       <div class="container my-5 p-0">
         <label for="email">E-mail</label>
-        <input type="email" class="form-control" placeholder="E-mail" name="email" id="email" value="asd@asd.com"> 
+        <input type="email" class="form-control" placeholder="E-mail" name="email" id="email" value="asd@gmail.com"> 
       </div>
 
       <div class="container mb-3 p-0">
         <label for="masterPassword">Master Password</label>
-        <input type="password" class="form-control" placeholder="Master Password" name="masterPassword" id="masterPassword" value="asd">
+        <input type="password" class="form-control" placeholder="Master Password" name="masterPassword" id="masterPassword" value="asdasd">
       </div>
 
       <div class="container mb-5 p-0">
         <label for="confirmPassword">Confirm Master Password</label>
-        <input type="password" class="form-control" placeholder="Master Password" name="confirmPassword" id="confirmPassword" value="asd">
+        <input type="password" class="form-control" placeholder="Master Password" name="confirmPassword" id="confirmPassword" value="asdasd">
       </div>
 
       <input class="btn" type="submit" value="Create">
 
     </form>
 
-    <script type="text/javascript">
-      
-      document.getElementById("form-id").addEventListener("submit", (event)=>{event.preventDefault();});
-      document.getElementById("form-id").addEventListener("submit", sendToServer);
-      
-      function sendToServer(event){
-        
-        event.preventDefault();
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('firstName').value;
-        const data = {firstName, lastName}
-        const options = {
-          method: 'POST',
-          headers: {
-                  'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        }
-        
-        fetch('/sign-up', options)
-      }
+    
+    <script type="text/javascript" src="./js/sign-up.js">     
     </script>
 
 

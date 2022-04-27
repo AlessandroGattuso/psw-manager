@@ -1,5 +1,6 @@
 const express = require("express")
 const path = require('path');
+const bcrypt = require('bcrypt')
 const Schema = require('../models/item.js')
 const app = express();
 
@@ -8,13 +9,18 @@ const signUpGet = ((req,res)=>{
   res.status(200);
 })
 
-const signUpPost = ((req,res)=>{
-  /*if(req.body.ConfirmPassword == req.body.Password){
-      const item = await Schema.create(req.body);
-  }*/
-  res.status(200);
-  console.log(req.body);
-  res.redirect('/');
+const signUpPost =  (async (req,res)=>{
+
+  req.body.masterPassword = await bcrypt.hash(req.body.masterPassword, 10)
+
+  try{
+    const item = await Schema.create(req.body);
+    console.log(item);
+    res.status(200).redirect('/');
+  }catch(error){
+    console.log(error);
+    res.status(500).json({ msg: error });
+  }
 })
 
 

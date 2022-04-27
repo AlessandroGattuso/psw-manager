@@ -1,8 +1,38 @@
-const Joi = require('joi');
+const moongose = require('mongoose');
 
-module.exports = Joi.object({ 
-  firstName: Joi.string().min(2).required,  
-  LastName: Joi.string().min(2).required,              
-  email: Joi.string().email().required(),
-  MasterPassword: Joi.string().min(5).required(),
-});      
+
+const validateEmail = function(email) {
+  const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email)
+};
+
+const Schema = new moongose.Schema({ //setting the rules with a schema
+    firstName: { 
+        type: String,
+        required: [true],
+        trim: true,        //without blank whitespace in name
+        maxlength: [30],
+    },     
+    lastName: { 
+      type: String,
+      required: [true, 'must provide last name'],
+      trim: true,        //without blank whitespace in name
+      maxlength: [30],
+    },                   
+    email: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      unique: true,
+      validate: [validateEmail, 'Please fill a valid email address'],
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+    },
+    masterPassword: {
+      type: String,
+      trim: true,
+      minlength: [5]
+    }
+  
+});
+
+module.exports = moongose.model('users', Schema)
