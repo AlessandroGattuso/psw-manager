@@ -1,9 +1,30 @@
-const express = require("express")
 const path = require('path');
-const app = express();
+const bcrypt = require('bcrypt')
+const Schema = require('../models/item.js');
+const { NULL } = require('mysql/lib/protocol/constants/types');
+
 
 const loginGet = ((req,res)=>{
   res.sendFile(path.join(__dirname,'../views','login.html')); 
 })
 
-module.exports = loginGet;
+const loginPost = (async (req,res) =>{
+ 
+    try{
+      const item = await Schema.findOne({email: req.body.email});
+      if(await bcrypt.compare(item.email,req.body.masterPassword)){
+        console.log(bcrypt.compare(item.email,req.body.masterPassword));
+        res.status(200);
+        res.redirect('/home');
+      }
+      else{
+        res.send('<script>alert("your password is wrong"); window.location.href = "/"; </script>');
+        res.status(404);
+      }
+   }catch(error){
+     res.send('<script>alert("your email is wrong"); window.location.href = "/"; </script>');
+     res.status(404);
+   }
+})
+
+module.exports = {loginGet, loginPost};

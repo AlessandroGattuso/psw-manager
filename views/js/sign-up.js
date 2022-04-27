@@ -18,9 +18,12 @@
         headers: {
                 'Content-Type': 'application/json',
         },
+        status: 200,
         body: JSON.stringify(data)
       }
-      fetch('/sign-up', options)
+ 
+      fetch('/sign-up', options);
+     
     }
     else{
       alert(`The passwords don't match`);

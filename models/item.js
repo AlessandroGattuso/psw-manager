@@ -6,19 +6,22 @@ const validateEmail = function(email) {
   return re.test(email)
 };
 
-const Schema = new moongose.Schema({ //setting the rules with a schema
+const Schema = new moongose.Schema({
+  
     firstName: { 
         type: String,
         required: [true],
-        trim: true,        //without blank whitespace in name
+        trim: true,        
         maxlength: [30],
-    },     
+    },    
+
     lastName: { 
       type: String,
       required: [true, 'must provide last name'],
-      trim: true,        //without blank whitespace in name
+      trim: true,        
       maxlength: [30],
-    },                   
+    }, 
+
     email: {
       type: String,
       trim: true,
@@ -27,10 +30,15 @@ const Schema = new moongose.Schema({ //setting the rules with a schema
       validate: [validateEmail, 'Please fill a valid email address'],
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
     },
+
     masterPassword: {
       type: String,
       trim: true,
       minlength: [5]
+    },
+
+    passwords: {
+      type: String
     }
   
 });
