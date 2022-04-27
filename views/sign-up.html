@@ -27,45 +27,59 @@
     </div>
 
         
-    <form action="/sign-up" method="POST" class="center pt-4 ps-4" id="form-id">
+    <form class="center pt-4 ps-4" id="form-id">
 
       <div class="row">
         <div class="col">
           <label for="firstName">First name</label>
-          <input type="text" class="form-control" placeholder="First name" name="firstName">
+          <input type="text" class="form-control" placeholder="First name" id="firstName" required value="ale">
         </div>
         <div class="col">
           <label for="lastName">Last name</label>
-          <input type="text" class="form-control" placeholder="Last name" name="lastName">
+          <input type="text" class="form-control" placeholder="Last name" id="lastName" required value="raro">
         </div>
       </div>
 
       <div class="container my-5 p-0">
         <label for="email">E-mail</label>
-        <input type="email" class="form-control" placeholder="E-mail" name="email">
+        <input type="email" class="form-control" placeholder="E-mail" name="email" id="email" value="asd@asd.com"> 
       </div>
 
       <div class="container mb-3 p-0">
-        <label for="MasterPassword">Master Password</label>
-        <input type="password" class="form-control" placeholder="Master Password" name="masterPassword">
+        <label for="masterPassword">Master Password</label>
+        <input type="password" class="form-control" placeholder="Master Password" name="masterPassword" id="masterPassword" value="asd">
       </div>
 
       <div class="container mb-5 p-0">
-        <label for="ConfirmPassword">Confirm Master Password</label>
-        <input type="password" class="form-control" placeholder="Master Password" name="confirmPassword">
+        <label for="confirmPassword">Confirm Master Password</label>
+        <input type="password" class="form-control" placeholder="Master Password" name="confirmPassword" id="confirmPassword" value="asd">
       </div>
 
       <input class="btn" type="submit" value="Create">
 
     </form>
 
-    <script>
-      $(document).ready(() =>{
-        ('#form-id').submit((e)=>{
-          e.preventDefault();
+    <script type="text/javascript">
       
-        });
-      });
+      document.getElementById("form-id").addEventListener("submit", (event)=>{event.preventDefault();});
+      document.getElementById("form-id").addEventListener("submit", sendToServer);
+      
+      function sendToServer(event){
+        
+        event.preventDefault();
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('firstName').value;
+        const data = {firstName, lastName}
+        const options = {
+          method: 'POST',
+          headers: {
+                  'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        }
+        
+        fetch('/sign-up', options)
+      }
     </script>
 
 

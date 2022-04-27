@@ -5,6 +5,7 @@ const app = express();
 
 const signUpGet = ((req,res)=>{
   res.sendFile(path.join(__dirname,'../views','sign-up.html'));   
+  res.status(200);
 })
 
 const signUpPost = ((req,res)=>{
@@ -12,7 +13,7 @@ const signUpPost = ((req,res)=>{
       const item = await Schema.create(req.body);
   }*/
   res.status(200);
-  console.log(res.json(req.body));
+  console.log(req.body);
   res.redirect('/');
 })
 
