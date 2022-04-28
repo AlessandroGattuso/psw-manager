@@ -12,8 +12,8 @@ const loginPost = (async (req,res) =>{
  
     try{
       const item = await Schema.findOne({email: req.body.email});
-      if(await bcrypt.compare(item.email,req.body.masterPassword)){
-        console.log(bcrypt.compare(item.email,req.body.masterPassword));
+      const d = await bcrypt.compare(req.body.masterPassword, item.masterPassword)
+      if(d){
         res.status(200);
         res.redirect('/home');
       }

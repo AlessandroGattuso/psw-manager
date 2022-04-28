@@ -13,8 +13,8 @@ const signUpPost =  (async (req,res)=>{
   req.body.masterPassword = await bcrypt.hash(req.body.masterPassword, 10)
 
   try{
-    //const item = await Schema.create(req.body);
-    //console.log(item);
+    const item = await Schema.create(req.body);
+    console.log(item);
     res.status(200);
     res.redirect('/');
   }catch(error){
