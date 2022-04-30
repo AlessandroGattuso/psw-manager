@@ -37,9 +37,26 @@ const Schema = new moongose.Schema({
       minlength: [5]
     },
 
-    passwords: {
-      type: String
-    }
+    portfolio: [{
+      WebsiteName: {type: String},
+      favicon: {type: String},
+      password: {
+        type: String,
+        trim: true,
+        minlength: [5]
+      }
+    }],
+
+    trash: [{
+      WebsiteName: {type: String},
+      favicon: {type: String},
+      password: {
+        type: String,
+        trim: true,
+        minlength: [5]
+      }
+    }]
+    
   
 });
 

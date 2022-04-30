@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB =  require('./db/connect');
+const cookieParser = require('cookie-parser');
 const route = require('./routes/routes');
 const path = require('path');
 require('dotenv').config();
@@ -9,10 +10,14 @@ const { sign } = require('crypto');
 const app = express();
 const PORT = 3000;
 
+// middleware
 app.use(express.urlencoded({extended: false}));
-app.use(express.static('./views'));
+app.use(express.static('views'));
+app.set('view engine', 'ejs');
+app.use(cookieParser());
 app.use(express.json());
 app.use('/', route);
+
 
 const start = async()=>{                
   try {

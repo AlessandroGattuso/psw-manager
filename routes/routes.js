@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 const {loginGet, loginPost} = require('../controllers/login-requests');
 const {signUpGet, signUpPost} = require('../controllers/signUp-requests');
