@@ -6,7 +6,6 @@ const { nextTick } = require('process');
 
 
 const loginGet = ((req,res)=>{
-  res.clearCookie('cookie');
   res.sendFile(path.join(__dirname,'../views','login.html')); 
 })
 
@@ -17,7 +16,7 @@ const loginPost = (async (req,res) =>{
     
       if(await bcrypt.compare(req.body.masterPassword, item.masterPassword)){
         res.status(200);
-        res.cookie('cookie', item._id, { maxAge: 900000, httpOnly: true });
+        res.cookie('cookie', item._id, { maxAge: 1800000, httpOnly: true });
         res.redirect('/home'); 
       }
       else{

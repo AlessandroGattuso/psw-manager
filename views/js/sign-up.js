@@ -18,7 +18,6 @@
         headers: {
                 'Content-Type': 'application/json',
         },
-        status: 200,
         body: JSON.stringify(data)
       }
  
