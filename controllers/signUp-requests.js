@@ -14,7 +14,7 @@ const signUpPost =  (async (req,res)=>{
 
   try{
     const item = await Schema.create(req.body);
-    console.log(item);
+    console.log(req.body);
     res.status(200);
     res.redirect('/');
   }catch(error){

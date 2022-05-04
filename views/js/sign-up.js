@@ -8,7 +8,7 @@
 
     if(masterPassword === confirmPassword){
 
-      //location.href('/email-verification');
+      //window.location.href('/email-verification');
       const firstName = document.getElementById('firstName').value;
       const lastName = document.getElementById('lastName').value;
       const email = document.getElementById('email').value;
@@ -21,7 +21,10 @@
         body: JSON.stringify(data)
       }
  
-      fetch('/sign-up', options);
+      fetch('/sign-up', options).then((res)=>{
+        if(res.redirected === true && res.status === 200)
+               window.location.href = '/';
+      });
      
     }
     else{
