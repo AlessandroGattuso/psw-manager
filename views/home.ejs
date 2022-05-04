@@ -82,14 +82,30 @@
       </div>
     </div>
 
-    <div class="d-flex bd-highlight title">
-      <div class="p-2 flex-grow-1 bd-highlight">My Vault</div>
+    <div class="d-flex title">
+      <div class="ms-3 flex-grow-1">My Vault</div>
       <div></div>
-      <a href="/add-item">
-        <button type="button" class="btn btn-primary add-button">Add item</button>
-      </a>
+      <button type="button" id="add-modal-btn" class="btn add-button">Add item</button>
     </div>
 
+    <div id="add-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="addClose">&times;</span>
+          <h2>Add Item</h2>
+        </div>
+        <div class="modal-body">
+          <p>This is my modal</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla repellendus nisi, sunt consectetur ipsa velit
+            repudiandae aperiam modi quisquam nihil nam asperiores doloremque mollitia dolor deleniti quibusdam nemo
+            commodi ab.</p>
+        </div>
+        <div class="modal-footer d-flex align-self-start">
+          <button id="add-btn" type="submit" class="btn add-btn">Add</button>
+        </div>
+      </div>
+    </div>
+    
     <div class="d-flex flex-column item-flex">
       <div class="item">
         <a href="https://github.com" style="text-decoration: none;">
@@ -97,9 +113,9 @@
         </a>
         <a class="title-item ms-4" href="https://github.com/">Github</a>
         <span class="email-text-item"><%=data.email%></span>
-        <a href="/edit">
-          <button type="button" class="btn btn-danger edit-button">Edit</button>
-        </a>
+   
+        <button id="edit-modal-btn" type="button" class="btn btn-danger edit-button">Edit</button>
+    
       </div>
       <div class="item">
         <a href="https://github.com" style="text-decoration: none;">
@@ -107,9 +123,9 @@
         </a>
         <a class="title-item ms-4" href="https://github.com/">Facebook</a>
         <span class="email-text-item"><%=data.email%></span>
-        <a href="/edit">
-          <button type="button" class="btn btn-danger edit-button">Edit</button>
-        </a>
+    
+        <button id="" type="button" class="btn btn-danger edit-button">Edit</button>
+ 
       </div>
       <div class="item">
         <a href="https://mongodb.com" style="text-decoration: none;">
@@ -117,14 +133,35 @@
         </a>
         <a class="title-item ms-4" href="https://mongodb.com/">Mongodb</a>
         <span class="email-text-item"><%=data.email%></span>
-        <a href="/edit">
-          <button type="button" class="btn btn-danger edit-button">Edit</button>
-        </a>
+     
+        <button id="" type="button" class="btn btn-danger edit-button">Edit</button>
+   
       </div>
     </div>
 
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="editClose">&times;</span>
+          <h2>Edit Item</h2>
+        </div>
+        <form action="/edit" method="update"></form>
+          <div class="modal-body">
+            <p>This is my modal</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla repellendus nisi, sunt consectetur ipsa velit
+              repudiandae aperiam modi quisquam nihil nam asperiores doloremque mollitia dolor deleniti quibusdam nemo
+              commodi ab.</p>
+          </div>
+          <div class="modal-footer d-flex align-self-start">
+            <button type="submit" class="btn update-btn">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./js/home.js"></script>
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
-  </body>
+  </body> 
 </html>

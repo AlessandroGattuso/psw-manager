@@ -1,12 +1,17 @@
 
 body{
-  background-color: /* dark mode: #04192F*/ rgb(231, 231, 231) !important;
+  background-color: /* dark mode: #04192F*/ rgb(238, 238, 238) !important;
   margin: 0;
   color: #0b65f5eb !important;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .header{
+  top: 0;
   box-shadow: 1.7px 1px 5px black;
   background-color: #b8143c !important;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -16,6 +21,7 @@ body{
   /* dark mode: border-right: 1.5px solid #b8143dc7;*/
   box-shadow: 2px 1px 5px black;
   position: fixed;
+  left: 0;
   top: 56px;
   bottom: 0;
   background-color: #10283c !important;
@@ -45,18 +51,19 @@ body{
 }
 
 .title{
-  position: absolute;
   margin-left: 26.7%;
-  margin-top: 7.5%;
-  width: 65%;
+  margin-top: -32%;
+  width: 67%;
   font-size: 24px;
 }
 
 .add-button{
   background-color: #0b65f5eb !important;
   color: white !important;
+  height: 32px;
+  margin-top: 7px;
+  margin-right: 10px;
   border-color: #0b65f5eb !important;
-  margin-top: 15%;
   font-size: 13px !important;
 }
 
@@ -69,7 +76,7 @@ body{
   position: absolute;
   width: 65%;
   margin-left: 26.7%;
-  margin-top: 13%;
+  margin-top: -10%;
 }
 
 .item{
@@ -122,24 +129,88 @@ body{
   border-color: #68717c;
 }
 
-*,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+:root {
+  --modal-duration: 1s;
+  --modal-color: #b8143c;
 }
 
-.popup{
-    background-color: #ffffff;
-    width: 420px;
-    padding: 30px 40px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-    border-radius: 8px;
-    display: none;
-    font-family: "Poppins",sans-serif;
-    text-align: center;
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  margin-left: 20%;
+  margin-top: 4%;
+  width: 67% !important;
+  height: 80% !important;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-header h2,
+.modal-footer h3 {
+  margin: 0;
+}
+
+.modal-header {
+  background: var(--modal-color);
+  padding: 15px;
+  color: rgb(238, 238, 238);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-body {
+  padding: 10px 20px;
+  background: #fff;
+}
+
+.modal-footer {
+  width: 100%;
+  background: var(--modal-color);
+  padding-top: 1.7% !important;
+  color: rgb(238, 238, 238);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.addClose,
+.editClose{
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+  color: rgb(238, 238, 238);
+}
+
+.addClose:hover,
+.addClose:focus,
+.editClose:hover,
+.editClose:focus{
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.add-btn,
+.update-btn{
+  background-color: #173954 !important;
+  color: #dae7fceb !important;
 }
