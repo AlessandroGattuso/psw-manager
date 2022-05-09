@@ -92,16 +92,36 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="addClose">&times;</span>
-          <h2>Add Item</h2>
         </div>
         <div class="modal-body">
-          <p>This is my modal</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla repellendus nisi, sunt consectetur ipsa velit
-            repudiandae aperiam modi quisquam nihil nam asperiores doloremque mollitia dolor deleniti quibusdam nemo
-            commodi ab.</p>
+         <form action="/home" method="patch" id="add-form">
+
+          <div class="row">
+            <div class="col">
+              <label for="uri">URI</label>
+              <input type="text" class="form-control" style="width: 83% !important;" value="https://example.com" id="uri" required>
+            </div>
+            <div class="col">
+              <label for="uri">username</label>
+              <input type="text" class="form-control" style="width: 83% !important;" value="notclay43" id="username">
+            </div>
+          </div>
+          
+          <div class="row  mt-4 mb-5 p-0">
+            <div class="container col">
+              <label for="email">E-mail</label>
+              <input type="email" class="form-control" style="width: 83% !important;" value="clay@gmail.com" id="email"> 
+            </div>
+      
+            <div class="container col">
+              <label for="password">password</label>
+              <input type="password" class="form-control" style="width: 83% !important;" value="clay123" id="password" required>
+            </div>
+          </div>
+         </form>
         </div>
         <div class="modal-footer d-flex align-self-start">
-          <button id="add-btn" type="submit" class="btn add-btn">Add</button>
+          <button id="add-btn" type="submit" form="add-form" class="btn add-btn">Add</button>
         </div>
       </div>
     </div>
@@ -143,19 +163,36 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="editClose">&times;</span>
-          <h2>Edit Item</h2>
         </div>
-        <form action="/edit" method="update"></form>
           <div class="modal-body">
-            <p>This is my modal</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla repellendus nisi, sunt consectetur ipsa velit
-              repudiandae aperiam modi quisquam nihil nam asperiores doloremque mollitia dolor deleniti quibusdam nemo
-              commodi ab.</p>
+            <form action="/home" method="patch" id="edit-form">
+              <div class="row">
+                <div class="col">
+                  <label for="uri">URI</label>
+                  <input type="text" class="form-control" style="width: 83% !important;" placeholder="https://example.com" id="uri" required>
+                </div>
+                <div class="col">
+                  <label for="uri">username</label>
+                  <input type="text" class="form-control" style="width: 83% !important;" id="username">
+                </div>
+              </div>
+              
+              <div class="row  mt-4 mb-5 p-0">
+                <div class="container col">
+                  <label for="email">E-mail</label>
+                  <input type="email" class="form-control" style="width: 83% !important;" name="email" id="email"> 
+                </div>
+          
+                <div class="container col">
+                  <label for="password">password</label>
+                  <input type="password" class="form-control" style="width: 83% !important;" id="password">
+                </div>
+              </div>
+            </form>
           </div>
           <div class="modal-footer d-flex align-self-start">
-            <button type="submit" class="btn update-btn">Update</button>
+            <button type="submit" form="edit-form" class="btn update-btn">Edit</button>
           </div>
-        </form>
       </div>
     </div>
 

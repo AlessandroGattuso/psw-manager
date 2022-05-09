@@ -2,6 +2,9 @@
 const addModal = document.querySelector('#add-modal');
 const addModalBtn = document.querySelector('#add-modal-btn');
 const closeAddBtn = document.querySelector('.addClose');
+document.getElementById("add-form").addEventListener("submit", (event)=>{event.preventDefault();});
+document.getElementById("add-form").addEventListener("submit", sendToServer);
+
 
 const editModal = document.querySelector('#edit-modal');
 const editModalBtn = document.querySelector('#edit-modal-btn');
@@ -48,3 +51,22 @@ function editOutsideClick(e) {
   }
 }
 
+// send data form to the server
+async function sendToServer(){
+
+  const uri = document.getElementById('uri').value;
+  const username = document.getElementById('username').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const data = {uri, username, email, password}
+  const options = {
+    method: 'PATCH',
+    headers: {
+            'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  }
+  fetch('/home', options).then((res)=>{})
+
+}

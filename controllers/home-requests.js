@@ -15,9 +15,33 @@ const homeGet = (async (req,res)=>{
     }   
 })
 
+const  addItem = (async (req,res)=>{
+
+   const cookie = req.cookies['cookie'];
+   const data = {
+        uri: req.body.uri,
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+   }
+   const item = await Schema.findOneAndUpdate({_id: cookie},{
+
+        $push: { portfolio: data  } },
+        function (error, success){
+              if (error) {
+                  console.log(error);
+              } else {
+                  console.log(success);
+              }
+   });
+    
+   console.log(typeof req.body.username)
+   console.log(item.portfolio);
+});
+
 const signOut = ((req,res)=>{
     res.clearCookie('cookie');
     res.redirect('/');
 })
 
-module.exports = {homeGet, signOut};
+module.exports = {homeGet, addItem, signOut};

@@ -52,8 +52,8 @@ body{
 
 .title{
   margin-left: 26.7%;
-  margin-top: -32%;
-  width: 67%;
+  margin-top: -30%;
+  width: 66.7%;
   font-size: 24px;
 }
 
@@ -148,9 +148,9 @@ body{
 
 .modal-content {
   margin-left: 20%;
-  margin-top: 4%;
+  margin-top: 6%;
   width: 67% !important;
-  height: 80% !important;
+  height: 50% !important;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
@@ -170,6 +170,7 @@ body{
 }
 
 .modal-body {
+  margin-top: 2%;
   padding: 10px 20px;
   background: #fff;
 }
@@ -195,7 +196,7 @@ body{
 .addClose:focus,
 .editClose:hover,
 .editClose:focus{
-  color: #000;
+  color: #10283c;
   text-decoration: none;
   cursor: pointer;
 }
@@ -211,6 +212,8 @@ body{
 
 .add-btn,
 .update-btn{
+  width: 10% !important;
+  height: 80% !important;
   background-color: #173954 !important;
   color: white !important;
 }

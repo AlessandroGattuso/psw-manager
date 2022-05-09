@@ -38,22 +38,22 @@ const Schema = new moongose.Schema({
     },
 
     portfolio: [{
-      WebsiteName: {type: String},
-      favicon: {type: String},
+      uri: {type: String},
+      username: {type: String},
+      email: {type: String},
       password: {
         type: String,
         trim: true,
-        minlength: [5]
       }
     }],
 
     trash: [{
-      WebsiteName: {type: String},
-      favicon: {type: String},
+      uri: {type: String},
+      username: {type: String},
+      email: {type: String},
       password: {
         type: String,
         trim: true,
-        minlength: [5]
       }
     }]
     
