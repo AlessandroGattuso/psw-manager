@@ -33,7 +33,7 @@ const  addItem = (async (req,res)=>{
               } else {
                   console.log(success);
               }
-   });
+   })
     
    console.log(typeof req.body.username)
    console.log(item.portfolio);
