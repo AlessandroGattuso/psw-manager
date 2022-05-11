@@ -7,7 +7,7 @@ document.getElementById("add-form").addEventListener("submit", sendToServer);
 
 
 const editModal = document.querySelector('#edit-modal');
-const editModalBtn = document.querySelector('#edit-modal-btn');
+const editModalBtn = document.querySelector('.edit-button');
 const closeEditBtn = document.querySelector('.editClose');
 
 // Events
@@ -61,12 +61,15 @@ async function sendToServer(){
 
   const data = {uri, username, email, password}
   const options = {
-    method: 'PATCH',
+    method: 'post',
     headers: {
             'Content-Type': 'application/json',
     },
     body: JSON.stringify(data)
   }
-  fetch('/home', options).then((res)=>{})
+  fetch('/home', options).then((res)=>{
+    if(res.redirected === true && res.status === 200)
+               window.location.href = '/home';
+  })
 
 }

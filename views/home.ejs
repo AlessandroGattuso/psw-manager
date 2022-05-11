@@ -94,7 +94,7 @@
           <span class="addClose">&times;</span>
         </div>
         <div class="modal-body">
-         <form action="/home" method="patch" id="add-form">
+         <form action="/home" method="post" id="add-form">
 
           <div class="row">
             <div class="col">
@@ -127,36 +127,17 @@
     </div>
     
     <div class="d-flex flex-column item-flex">
-      <div class="item">
-        <a href="https://github.com" style="text-decoration: none;">
-          <img src="https://github.com/favicon.ico" class="logo-item">
-        </a>
-        <a class="title-item ms-4" href="https://github.com/">Github</a>
-        <span class="email-text-item"><%=data.email%></span>
-   
-        <button id="edit-modal-btn" type="button" class="btn btn-danger edit-button">Edit</button>
+      <% data.forEach(item =>{ %>
+        <div class="item">
+          <a href="<%=item.uri%>" style="text-decoration: none;">
+            <img src="<%=item.favicon%>" class="logo-item">
+          </a>
+          <a class="title-item ms-4" href="https://github.com/"><%=item.title%></a>
+          <span class="email-text-item"><%=item.email%></span>
     
-      </div>
-      <div class="item">
-        <a href="https://github.com" style="text-decoration: none;">
-          <img src="https://facebook.com/favicon.ico" class="logo-item">
-        </a>
-        <a class="title-item ms-4" href="https://github.com/">Facebook</a>
-        <span class="email-text-item"><%=data.email%></span>
-    
-        <button id="" type="button" class="btn btn-danger edit-button">Edit</button>
- 
-      </div>
-      <div class="item">
-        <a href="https://mongodb.com" style="text-decoration: none;">
-          <img src="https://mongodb.com/favicon.ico" class="logo-item">
-        </a>
-        <a class="title-item ms-4" href="https://mongodb.com/">Mongodb</a>
-        <span class="email-text-item"><%=data.email%></span>
-     
-        <button id="" type="button" class="btn btn-danger edit-button">Edit</button>
-   
-      </div>
+          <button id="edit-modal-btn" type="button" class="btn btn-danger edit-button">Edit</button>
+        </div>
+      <%}); %>
     </div>
 
     <div id="edit-modal" class="modal">
@@ -179,7 +160,7 @@
               
               <div class="row  mt-4 mb-5 p-0">
                 <div class="container col">
-                  <label for="email">E-mail</label>
+                  <label for="email">e-mail</label>
                   <input type="email" class="form-control" style="width: 83% !important;" name="email" id="email"> 
                 </div>
           
@@ -191,7 +172,7 @@
             </form>
           </div>
           <div class="modal-footer d-flex align-self-start">
-            <button type="submit" form="edit-form" class="btn update-btn">Edit</button>
+            <button type="submit" form="edit-form" class="btn update-btn">Save</button>
           </div>
       </div>
     </div>
