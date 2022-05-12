@@ -128,14 +128,14 @@
     
     <div class="d-flex flex-column item-flex">
       <% data.forEach(item =>{ %>
-        <div class="item">
-          <a href="<%=item.uri%>" style="text-decoration: none;">
-            <img src="<%=item.favicon%>" class="logo-item">
+        <div class="item" id="object">
+          <a href="<%=item.uri%>"  target="_blank" style="text-decoration: none;">
+            <img src="<%=item.favicon%>" target="_blank"  class="logo-item">
           </a>
-          <a class="title-item ms-4" href="https://github.com/"><%=item.title%></a>
+          <a class="title-item ms-4" href="<%=item.uri%>" target="_blank"><%=item.title%></a>
           <span class="email-text-item"><%=item.email%></span>
-    
-          <button id="edit-modal-btn" type="button" class="btn btn-danger edit-button">Edit</button>
+        
+          <button type="button" class="btn btn-danger edit-button">Edit</button>
         </div>
       <%}); %>
     </div>

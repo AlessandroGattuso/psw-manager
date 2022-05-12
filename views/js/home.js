@@ -7,7 +7,7 @@ document.getElementById("add-form").addEventListener("submit", sendToServer);
 
 
 const editModal = document.querySelector('#edit-modal');
-const editModalBtn = document.querySelector('.edit-button');
+const editModalBtn = document.querySelectorAll('.edit-button');
 const closeEditBtn = document.querySelector('.editClose');
 
 // Events
@@ -15,7 +15,7 @@ addModalBtn.addEventListener('click', openAddModal);
 closeAddBtn.addEventListener('click', closeAddModal);
 window.addEventListener('click', addOutsideClick);
 
-editModalBtn.addEventListener('click', openEditModal);
+editModalBtn.forEach(button => button.addEventListener('click', openEditModal))
 closeEditBtn.addEventListener('click', closeEditModal);
 window.addEventListener('click', editOutsideClick);
 

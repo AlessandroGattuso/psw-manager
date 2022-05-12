@@ -1,23 +1,10 @@
 const path = require('path');
 const Schema = require('../models/item')
-const crypt = require('crypto');
 const bcrypt = require('bcrypt');
 const CryptoJS = require('crypto-js');
 
 let dictKey = {};
 let idK = -1;
-
-function domain_from_url(url) {
-    let result
-    let match
-    if (match = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/im)) {
-        result = match[1]
-        if (match = result.match(/^[^\.]+\.(.+\..+)$/)) {
-            result = match[1]
-        }
-    }
-    return result
-}
 
 const homeGet = (async (req,res)=>{
     const cookie = req.cookies['cookie'];
@@ -27,7 +14,6 @@ const homeGet = (async (req,res)=>{
 
         const item = await Schema.findOne({_id : cookie});
         const portfolio = item.portfolio;
-        const pttrn = /^(https?:\/\/)?(www\.)?([^\/]+)/gm;
 
         portfolio.forEach(function(obj){
             const domain = new URL(obj.uri);
