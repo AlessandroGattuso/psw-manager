@@ -72,7 +72,7 @@
       </ul>
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <strong><%=data.username%></strong>
+          <strong><%=name%></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-light text-small shadow menu-user" aria-labelledby="dropdownUser1">
           <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -149,10 +149,6 @@
             <form action="/home" method="patch" id="edit-form">
               <div class="row">
                 <div class="col">
-                  <label for="uri">URI</label>
-                  <input type="text" class="form-control" style="width: 83% !important;" placeholder="https://example.com" id="uri" required>
-                </div>
-                <div class="col">
                   <label for="uri">username</label>
                   <input type="text" class="form-control" style="width: 83% !important;" id="username">
                 </div>
@@ -161,7 +157,7 @@
               <div class="row  mt-4 mb-5 p-0">
                 <div class="container col">
                   <label for="email">e-mail</label>
-                  <input type="email" class="form-control" style="width: 83% !important;" name="email" id="email"> 
+                  <input type="email" class="form-control" style="width: 83% !important;" id="email"> 
                 </div>
           
                 <div class="container col">

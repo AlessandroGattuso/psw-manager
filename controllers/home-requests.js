@@ -22,7 +22,10 @@ const homeGet = (async (req,res)=>{
             obj.uri = domain.origin;
         });
 
-        res.render('home', { data: portfolio });
+        res.render('home', { 
+            name: item.firstName,
+            data: portfolio 
+        });
         res.status(200);
     }   
 })
@@ -53,12 +56,21 @@ const  addItem = (async (req,res)=>{
     }).catch((error)=>{console.log(error)});
     
     res.status(200);
-    res.redirect('/')
+    res.redirect('/home')
 });
+
+const editItem = (async (req,res)=>{
+    const cookie = req.cookies['cookie'];
+
+    
+    
+    res.status(200);
+    res.redirect('/home');
+})
 
 const signOut = ((req,res)=>{
     res.clearCookie('cookie');
     res.redirect('/');
 })
 
-module.exports = {homeGet, addItem, signOut};
+module.exports = {homeGet, addItem, editItem, signOut};
