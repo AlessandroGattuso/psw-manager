@@ -15,11 +15,11 @@ document.getElementById("edit-form").addEventListener("submit", sendToServerPatc
 // Events
 addModalBtn.addEventListener('click', openAddModal);
 closeAddBtn.addEventListener('click', closeAddModal);
-window.addEventListener('click', addOutsideClick);
+
 
 editModalBtn.forEach(button => button.addEventListener('click', openEditModal))
 closeEditBtn.addEventListener('click', closeEditModal);
-window.addEventListener('click', editOutsideClick);
+
 
 // Open
 function openAddModal(){
@@ -37,20 +37,6 @@ function closeAddModal(){
 
 function closeEditModal(){
   editModal.style.display = 'none';
-}
-
-// Close If Outside Click
-
-function addOutsideClick(e) {
-  if (e.target == addModal) {
-    addModal.style.display = 'none';
-  }
-}
-
-function editOutsideClick(e) {
-  if (e.target == editModal) {
-    editModal.style.display = 'none';
-  }
 }
 
 // send data form to the server
