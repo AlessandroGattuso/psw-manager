@@ -1,9 +1,6 @@
 const path = require('path');
 const bcrypt = require('bcrypt')
 const Schema = require('../models/item.js');
-const { NULL } = require('mysql/lib/protocol/constants/types');
-const { nextTick } = require('process');
-
 
 const loginGet = ((req,res)=>{
   res.sendFile(path.join(__dirname,'../views','login.html')); 

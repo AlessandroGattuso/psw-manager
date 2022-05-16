@@ -83,3 +83,9 @@ function sendToServerPatch(){
   })
 
 }
+
+//get an id 
+let id = -1
+function getId(){
+  return 'edit-button' + ++id;
+}

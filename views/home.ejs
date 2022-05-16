@@ -35,7 +35,7 @@
                 <a class="nav-link active" aria-current="page" href="/home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./tools.html">Tools</a>
+                <a class="nav-link" href="/tools">Tools</a>
               </li>
           </div>
         </div>
@@ -135,7 +135,7 @@
           <a class="title-item ms-4" href="<%=item.uri%>" target="_blank"><%=item.title%></a>
           <span class="email-text-item"><%=item.email%></span>
         
-          <button type="button" class="btn btn-danger edit-button">Edit</button>
+          <button type="button" id="getId();" onclick="getEdit(id);" class="btn btn-danger edit-button">Edit</button>
         </div>
       <%}); %>
     </div>
@@ -150,7 +150,7 @@
               <div class="row">
                 <div class="col">
                   <label for="uri">username</label>
-                  <input type="text" class="form-control" style="width: 40.4% !important;" id="username">
+                  <input type="text" class="form-control" style="width: 40.25% !important;" id="username">
                 </div>
               </div>
               

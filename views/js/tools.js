@@ -18,7 +18,8 @@ function generatePassword() {
   const a_z = "abcdefghijklmnopqrstuvwxyz";
   const numbers = "0123456789";
   const A_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const S_chars = "!@#$%^&*/§"; 
+  const S_chars = "!@$%&"; 
+  const ambiguousChars = "^§()*/^#";
 
   if(document.getElementById('a-z').checked)
         charset += a_z;
@@ -35,6 +36,9 @@ function generatePassword() {
   if(document.getElementById('numbers').checked)
         charset += numbers;
   
+  if(!(document.getElementById('ambiguous-chars').checked))
+        charset += ambiguousChars;
+    
 
   let result = "";
   let i = 0;

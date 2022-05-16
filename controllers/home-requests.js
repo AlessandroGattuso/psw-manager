@@ -3,9 +3,6 @@ const Schema = require('../models/item')
 const bcrypt = require('bcrypt');
 const CryptoJS = require('crypto-js');
 
-let dictKey = {};
-let idK = -1;
-
 const homeGet = (async (req,res)=>{
     const cookie = req.cookies['cookie'];
     if(cookie === undefined){
