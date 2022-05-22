@@ -7,8 +7,7 @@ document.getElementById("add-form").addEventListener("submit", sendToServerPost)
 
 
 const editModal = document.querySelector('#edit-modal');
-const editModalBtn = document.querySelectorAll('.edit-button');
-const closeEditBtn = document.querySelector('.editClose');
+const closeEditBtn = document.querySelector('.editClose');     
 document.getElementById("edit-form").addEventListener("submit", (event)=>{event.preventDefault();});
 document.getElementById("edit-form").addEventListener("submit", sendToServerPatch);
 
@@ -16,8 +15,6 @@ document.getElementById("edit-form").addEventListener("submit", sendToServerPatc
 addModalBtn.addEventListener('click', openAddModal);
 closeAddBtn.addEventListener('click', closeAddModal);
 
-
-editModalBtn.forEach(button => button.addEventListener('click', openEditModal))
 closeEditBtn.addEventListener('click', closeEditModal);
 
 
@@ -84,8 +81,82 @@ function sendToServerPatch(){
 
 }
 
-//get an id 
-let id = -1
-function getId(){
-  return 'edit-button' + ++id;
+// showing in the edit modal your data
+
+function getEdit(idBtn){
+
+  const id = (idBtn.toString()).match(/\d+/g)
+  const username = document.getElementById(('usernameId' + id).toString()).value;
+  const email = document.getElementById(('emailId' + id).toString()).value;
+  const password = document.getElementById(('pswId' + id).toString()).value;
+
+  const user_name = document.getElementById(('username-edit'));
+  const e_mail= document.getElementById(('email-edit'));
+  const psw = document.getElementById(('password-edit'));
+
+  user_name.value = username;
+  e_mail.value = email;
+  psw.value = password; 
+
+  openEditModal()
 }
+//set ids 
+/*window.document.onload = function(e) { 
+
+  const buttons = documentx.getElementsByClassName('edit-button')
+  const username = document.getElementsByClassName('usernameId')
+  const email = document.getElementsByClassName('emailId')
+  const psw = document.getElementsByClassName('pswId')
+  
+  for( let i = 0; i < buttons.length; i++ ) {
+
+    let idBtn  = 'edit-btn' + i
+    let idUsername = 'usernameId' + i
+    let idEmail =  'emailId' + i
+    let idPsw = 'pswId' + i
+
+    buttons[i].setAttribute("id", idBtn);
+    username[i].setAttribute("id", idUsername);
+    email[i].setAttribute("id", idEmail);
+    psw[i].setAttribute("id", idPsw);
+
+  } 
+  
+}*/
+
+function getBtnId(){
+  const item = document.getElementsByName('edit-button')
+
+  for( let i = 0; i < item.length; i++ ) {
+    item[i].id = ('edit-btn' + i).toString()
+  } 
+}
+
+function getUsernameId(){
+  const item = document.getElementsByName('usernameId')
+
+  for( let i = 0; i < item.length; i++ ) {
+    item[i].id = ('usernameId' + i).toString()
+  } 
+}
+
+function getEmailId(){
+  const item = document.getElementsByName('emailId')
+  
+  for( let i = 0; i < item.length; i++ ) {
+    item[i].id = ('emailId' + i).toString()
+  } 
+}
+
+function getPswId(){
+  const item = document.getElementsByName('pswId')
+
+  for( let i = 0; i < item.length; i++ ) {
+    item[i].id = ('pswId' + i).toString()
+  } 
+}
+
+getBtnId();
+getUsernameId();
+getEmailId();
+getPswId();

@@ -4,8 +4,7 @@ const cookieParser = require('cookie-parser');
 const route = require('./routes/routes');
 const path = require('path');
 require('dotenv').config();
-
-const { sign } = require('crypto');
+const cors = require('cors')
 
 const app = express();
 const PORT = 3000;
@@ -17,7 +16,6 @@ app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(express.json());
 app.use('/', route);
-
 
 const start = async()=>{                
   try {

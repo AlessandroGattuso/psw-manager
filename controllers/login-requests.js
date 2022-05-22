@@ -13,7 +13,11 @@ const loginPost = (async (req,res) =>{
     
       if(await bcrypt.compare(req.body.masterPassword, item.masterPassword)){
         res.status(200);
-        res.cookie('cookie', item._id, { maxAge: 1800000, httpOnly: true });
+        res.cookie('cookie', item._id, { 
+          maxAge: 1800000, 
+          secure: true,
+          sameSite: "none"
+        });
         res.redirect('/home'); 
       }
       else{

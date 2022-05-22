@@ -60,15 +60,7 @@
             </a>
           </div>
         </li>
-        <li>
-          <div class="container-sm">
-            <img class="trash-bin-logo" src="./images/recycle-bin.jpeg">
-            <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-              Trash
-            </a>
-          </div>
-        </li>
+       
       </ul>
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -134,8 +126,11 @@
           </a>
           <a class="title-item ms-4" href="<%=item.uri%>" target="_blank"><%=item.title%></a>
           <span class="email-text-item"><%=item.email%></span>
-        
-          <button type="button" id="getId();" onclick="getEdit(id);" class="btn btn-danger edit-button">Edit</button>
+
+          <input type="text" name="usernameId" style="display: none;" value="<%=item.username%>">
+          <input type="text" name="emailId" style="display: none;" value="<%=item.email%>">
+          <input type="text" name="pswId" style="display: none;" value="<%=item.password%>">
+          <button type="button" onclick="getEdit(this.id);" class="btn btn-danger" name="edit-button">Edit</button>
         </div>
       <%}); %>
     </div>
@@ -150,19 +145,19 @@
               <div class="row">
                 <div class="col">
                   <label for="uri">username</label>
-                  <input type="text" class="form-control" style="width: 40.25% !important;" id="username">
+                  <input type="text" class="form-control" style="width: 40.25% !important;" id="username-edit">
                 </div>
               </div>
               
               <div class="row  mt-4 mb-5 p-0">
                 <div class="container col">
                   <label for="email">e-mail</label>
-                  <input type="email" class="form-control" style="width: 83% !important;" id="email"> 
+                  <input type="email" class="form-control" style="width: 83% !important;" id="email-edit"> 
                 </div>
           
                 <div class="container col">
                   <label for="password">password</label>
-                  <input type="password" class="form-control" style="width: 83% !important;" id="password">
+                  <input type="password" class="form-control" style="width: 83% !important;" id="password-edit">
                 </div>
               </div>
             </form>

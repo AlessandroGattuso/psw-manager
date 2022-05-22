@@ -45,18 +45,7 @@ const Schema = new moongose.Schema({
         type: String,
         trim: true,
       }
-    }],
-
-    trash: [{
-      uri: {type: String},
-      username: {type: String},
-      email: {type: String},
-      password: {
-        type: String,
-        trim: true,
-      }
     }]
-    
   
 });
 
