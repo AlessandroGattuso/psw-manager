@@ -100,29 +100,6 @@ function getEdit(idBtn){
 
   openEditModal()
 }
-//set ids 
-/*window.document.onload = function(e) { 
-
-  const buttons = documentx.getElementsByClassName('edit-button')
-  const username = document.getElementsByClassName('usernameId')
-  const email = document.getElementsByClassName('emailId')
-  const psw = document.getElementsByClassName('pswId')
-  
-  for( let i = 0; i < buttons.length; i++ ) {
-
-    let idBtn  = 'edit-btn' + i
-    let idUsername = 'usernameId' + i
-    let idEmail =  'emailId' + i
-    let idPsw = 'pswId' + i
-
-    buttons[i].setAttribute("id", idBtn);
-    username[i].setAttribute("id", idUsername);
-    email[i].setAttribute("id", idEmail);
-    psw[i].setAttribute("id", idPsw);
-
-  } 
-  
-}*/
 
 function getBtnId(){
   const item = document.getElementsByName('edit-button')
