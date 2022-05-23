@@ -8,8 +8,8 @@ document.getElementById("add-form").addEventListener("submit", sendToServerPost)
 
 const editModal = document.querySelector('#edit-modal');
 const closeEditBtn = document.querySelector('.editClose');     
-document.getElementById("edit-form").addEventListener("submit", (event)=>{event.preventDefault();});
-document.getElementById("edit-form").addEventListener("submit", sendToServerPatch);
+document.getElementById("saveBtn").addEventListener("click", (event)=>{event.preventDefault();});
+document.getElementById("saveBtn").addEventListener("click", sendToServerPatch);
 
 // Events
 addModalBtn.addEventListener('click', openAddModal);
@@ -54,29 +54,32 @@ function sendToServerPost(){
   }
   fetch('/home', options).then((res)=>{
     if(res.redirected === true && res.status === 200)
-               window.location.href = '/home';
+               window.location.href = res.url;
   })
 
 }
 
 function sendToServerPatch(){
 
-  const uri = document.getElementById('uri').value;
-  const username = document.getElementById('username').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const id = document.getElementById('id-edit').value;
+  const username = document.getElementById('username-edit').value;
+  const email = document.getElementById('email-edit').value;
+  const password = document.getElementById('password-edit').value;
 
-  const data = {uri, username, email, password}
+  const data = {id, username, email, password}
+  
   const options = {
-    method: 'patch',
+    method: 'PATCH',
     headers: {
             'Content-Type': 'application/json',
     },
+    redirect: 'follow',
     body: JSON.stringify(data)
   }
+
   fetch('/home', options).then((res)=>{
-    if(res.redirected === true && res.status === 200)
-               window.location.href = '/home';
+    if(res.status === 200)
+               window.location.href = res.url;
   })
 
 }
@@ -86,19 +89,30 @@ function sendToServerPatch(){
 function getEdit(idBtn){
 
   const id = (idBtn.toString()).match(/\d+/g)
+  const Id =  document.getElementById(('Id' + id).toString()).value;
   const username = document.getElementById(('usernameId' + id).toString()).value;
   const email = document.getElementById(('emailId' + id).toString()).value;
   const password = document.getElementById(('pswId' + id).toString()).value;
 
+  const idEdit =  document.getElementById(('id-edit'));
   const user_name = document.getElementById(('username-edit'));
   const e_mail= document.getElementById(('email-edit'));
   const psw = document.getElementById(('password-edit'));
 
+  idEdit.value = Id 
   user_name.value = username;
   e_mail.value = email;
   psw.value = password; 
 
   openEditModal()
+}
+
+function getIds(){
+  const item = document.getElementsByName('Id')
+
+  for( let i = 0; i < item.length; i++ ) {
+    item[i].id = ('Id' + i).toString();
+  } 
 }
 
 function getBtnId(){
@@ -137,3 +151,4 @@ getBtnId();
 getUsernameId();
 getEmailId();
 getPswId();
+getIds();

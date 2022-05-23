@@ -127,6 +127,7 @@
           <a class="title-item ms-4" href="<%=item.uri%>" target="_blank"><%=item.title%></a>
           <span class="email-text-item"><%=item.email%></span>
 
+          <input type="text" name="Id" style="display: none;" value="<%=item.id%>">
           <input type="text" name="usernameId" style="display: none;" value="<%=item.username%>">
           <input type="text" name="emailId" style="display: none;" value="<%=item.email%>">
           <input type="text" name="pswId" style="display: none;" value="<%=item.password%>">
@@ -145,6 +146,7 @@
             <form action="/home" method="patch" id="edit-form">
               <div class="row">
                 <div class="col">
+                  <input type="text" style="display: none;" id="id-edit" >
                   <label for="uri">username</label>
                   <input type="text" class="form-control" style="width: 40.25% !important;" id="username-edit">
                 </div>
@@ -164,7 +166,7 @@
             </form>
           </div>
           <div class="modal-footer d-flex align-self-start">
-            <button type="submit" form="edit-form" class="btn update-btn">Save</button>
+            <button type="submit" form="edit-form" class="btn update-btn" id="saveBtn">Save</button>
           </div>
       </div>
     </div>

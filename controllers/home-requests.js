@@ -1,7 +1,6 @@
-const path = require('path');
 const Schema = require('../models/item')
 const bcrypt = require('bcrypt');
-const CryptoJS = require('crypto-js');
+const { AES, enc } = require('crypto-js');
 
 let dict = {};
 let idK = 0;
@@ -26,8 +25,7 @@ const homeGet = (async (req,res)=>{
                 obj.title = (obj.uri).replace(/.+\/\/|www.|\..+/g, '')
                 obj.uri = domain.origin;
                 const passphrase = dict[i++];
-                const decrypted = CryptoJS.AES.decrypt(obj.password, passphrase);
-                console.log( dict + " " + passphrase + " " + decrypted) 
+                const decrypted = AES.decrypt(obj.password, passphrase).toString(enc.Utf8);
                 obj.password = decrypted;
 
             });
@@ -47,13 +45,10 @@ const homeGet = (async (req,res)=>{
 const  addItem = (async (req,res)=>{
 
     const cookie = req.cookies['cookie'];
-
     const hash = await bcrypt.hash(req.body.password, 10)
     const  hashKey = await bcrypt.hash(req.body.password + hash, 10);
     dict[idK] = hashKey;
-    const encrypted = CryptoJS.AES.encrypt(req.body.password, dict[idK]).toString()
-    console.log(encrypted + " " + dict)
-    idK++;
+    const encrypted = AES.encrypt(req.body.password, dict[idK++]).toString()
     const data = {
         uri: req.body.uri,
         username: req.body.username,
@@ -73,11 +68,30 @@ const  addItem = (async (req,res)=>{
 
 const editItem = (async (req,res)=>{
     const cookie = req.cookies['cookie'];
+ 
+    const {id: editId, username: editUsername, email: editEmail, password: editPsw} = req.body;
+    const user = await Schema.findOneAndUpdate({_id: cookie});
 
+    let i = 0
+
+    user.portfolio.forEach(async (item)=>{
+
+        if((item._id).toString() === (editId).toString()){
+            const hash = await bcrypt.hash(editPsw, 10)
+            const  hashKey = await bcrypt.hash(editPsw + hash, 10);
+            dict[i] = hashKey;
+            const encrypted = AES.encrypt(editPsw, dict[i]).toString()
+            item.username = editUsername;
+            item.email = editEmail;
+            item.password = encrypted;
+            console.log(item)
+            await user.save();
+            return;
+        }
+        i++
+    })
     
-    
-    res.status(200);
-    res.redirect('/home');
+    res.redirect(200, '/home')
 })
 
 const signOut = ((req,res)=>{
