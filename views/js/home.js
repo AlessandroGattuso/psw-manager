@@ -54,12 +54,12 @@ function sendToServerPost(){
   }
   fetch('/home', options).then((res)=>{
     if(res.redirected === true && res.status === 200)
-               window.location.href = res.url;
+                  location.reload();
   })
 
 }
 
-function sendToServerPatch(){
+async function sendToServerPatch(){
 
   const id = document.getElementById('id-edit').value;
   const username = document.getElementById('username-edit').value;
@@ -67,7 +67,7 @@ function sendToServerPatch(){
   const password = document.getElementById('password-edit').value;
 
   const data = {id, username, email, password}
-  
+
   const options = {
     method: 'PATCH',
     headers: {
@@ -77,15 +77,41 @@ function sendToServerPatch(){
     body: JSON.stringify(data)
   }
 
-  fetch('/home', options).then((res)=>{
-    if(res.status === 200)
-               window.location.href = res.url;
-  })
+  let status;
+  await fetch('/home', options).then((res)=> {status = res.status; res.blob();})
+  .then(data=> {return data})
 
+  if(status === 200){
+    document.getElementById('username-edit').value = data.username;
+    document.getElementById('email-edit').value = data.email;
+    document.getElementById('password-edit').value = data.password;
+
+    window.location.href = window.location.href.split('#')[0];;
+    return false;
+  }
 }
 
-// showing in the edit modal your data
+async function Delete(idBtn){
+  const id = (idBtn.toString()).match(/\d+/g)
+  const idObj = document.getElementById(('Id' + id).toString()).value;
 
+  const options = {
+    method: 'delete',
+    headers: {
+            'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    body: JSON.stringify({idItem: idObj, number: id})
+  }
+
+  await fetch('/home', options).then((res) => {
+    if(res.status === 200)
+        location.reload()
+  }).catch(err => console.log(err))
+}
+
+
+// showing in the edit modal your data
 function getEdit(idBtn){
 
   const id = (idBtn.toString()).match(/\d+/g)
@@ -104,6 +130,7 @@ function getEdit(idBtn){
   e_mail.value = email;
   psw.value = password; 
 
+  console.log(user_name.value +" "+ e_mail.value +" "+ psw.value);
   openEditModal()
 }
 
@@ -115,7 +142,15 @@ function getIds(){
   } 
 }
 
-function getBtnId(){
+function getDeleteId(){
+  const item = document.getElementsByName('delete-button')
+
+  for( let i = 0; i < item.length; i++ ) {
+    item[i].id = ('delete-btn' + i).toString()
+  } 
+}
+
+function getEditId(){
   const item = document.getElementsByName('edit-button')
 
   for( let i = 0; i < item.length; i++ ) {
@@ -147,8 +182,10 @@ function getPswId(){
   } 
 }
 
-getBtnId();
+getDeleteId();
+getEditId();
 getUsernameId();
 getEmailId();
 getPswId();
 getIds();
+getDeleteIds();

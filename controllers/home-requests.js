@@ -73,30 +73,44 @@ const editItem = (async (req,res)=>{
     const user = await Schema.findOneAndUpdate({_id: cookie});
 
     let i = 0
-
+    let returnData;
     user.portfolio.forEach(async (item)=>{
 
         if((item._id).toString() === (editId).toString()){
             const hash = await bcrypt.hash(editPsw, 10)
             const  hashKey = await bcrypt.hash(editPsw + hash, 10);
             dict[i] = hashKey;
+
             const encrypted = AES.encrypt(editPsw, dict[i]).toString()
             item.username = editUsername;
             item.email = editEmail;
             item.password = encrypted;
-            console.log(item)
             await user.save();
+            returnData = {editUsername, editEmail, editPsw};
             return;
         }
         i++
     })
-    
-    res.redirect(200, '/home')
+    res.json(JSON.stringify(returnData));
+    res.status(200)
 })
+
+const deleteItem = (async (req,res)=>{
+    const cookie = req.cookies['cookie'];
+    const {idItem, number} = req.body
+    console.log(req.body)
+    await Schema.findOneAndUpdate(
+        {_id: cookie}, 
+        {$pull: {portfolio: {_id: idItem}}}
+    )
+
+    //delete dict[number]
+    res.redirect(200, '/home')
+});
 
 const signOut = ((req,res)=>{
     res.clearCookie('cookie');
     res.redirect('/');
 })
 
-module.exports = {homeGet, addItem, editItem, signOut};
+module.exports = {homeGet, addItem, editItem, deleteItem ,signOut};

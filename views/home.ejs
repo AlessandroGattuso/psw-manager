@@ -132,6 +132,7 @@
           <input type="text" name="emailId" style="display: none;" value="<%=item.email%>">
           <input type="text" name="pswId" style="display: none;" value="<%=item.password%>">
 
+          <button type="button" onclick="Delete(this.id);" class="btn btn-danger delete-button" name="delete-button">Delete</button>
           <button type="button" onclick="getEdit(this.id);" class="btn btn-danger edit-button" name="edit-button">Edit</button>
         </div>
       <%}); %>
