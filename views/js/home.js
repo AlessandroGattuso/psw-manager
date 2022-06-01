@@ -101,7 +101,7 @@ async function Delete(idBtn){
             'Content-Type': 'application/json',
     },
     redirect: 'follow',
-    body: JSON.stringify({idItem: idObj, number: id})
+    body: JSON.stringify({idItem: idObj})
   }
 
   await fetch('/home', options).then((res) => {

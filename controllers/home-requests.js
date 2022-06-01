@@ -97,14 +97,13 @@ const editItem = (async (req,res)=>{
 
 const deleteItem = (async (req,res)=>{
     const cookie = req.cookies['cookie'];
-    const {idItem, number} = req.body
-    console.log(req.body)
+    const item = req.body;
+    
     await Schema.findOneAndUpdate(
         {_id: cookie}, 
-        {$pull: {portfolio: {_id: idItem}}}
-    )
+        {$pull: {portfolio: {_id: item.idItem}}}
+    ).catch((e)=>{console.log(e)})
 
-    //delete dict[number]
     res.redirect(200, '/home')
 });
 
